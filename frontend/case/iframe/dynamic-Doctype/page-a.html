@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <style type="text/css">
+        #demo{background:#ccc;padding:20px 100px;}
+    </style>
+</head>
+<body>
+
+
+<div id="demo">
+    <iframe name="myName" src="page-b.html" width="600" height="300" frameborder="0" scrolling="no"></iframe>
+</div>
+
+<script type="text/javascript">
+    window.onload = function(){
+        var doc = window.frames["myName"].document;
+        doc.write('<!DOCTYPE HTML>' +
+                  '<html>' +
+                      '<head>' +
+                          '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">' +
+                          '<title></title>' +
+                      '</head>' +
+                      '<body>' +
+                      '<h3>动态创建Doctype</h3>' +
+                      '</body>' +
+                  '</html>');
+        doc.close(); //无此方法，Chrome下文档将永久是正在加载状态
+    }
+</script>
+</body>
+</html>
