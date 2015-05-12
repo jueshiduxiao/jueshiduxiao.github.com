@@ -1,0 +1,18 @@
+在 ie8、chrome、firefox下
+
+将page下的span设置成display:inline-block时，每个span标签之间出现间隙
+
+
+解决方法：
+.page{
+    letter-spacing:-8px;
+   *letter-spacing:0;
+   *word-spacing:-4px;
+}
+.page span{
+    letter-spacing:0;
+   *letter-spacing:0;
+   *word-spacing: 0;
+}
+
+IE7浏览器使用word-spacing,其他浏览器使用letter-spacing

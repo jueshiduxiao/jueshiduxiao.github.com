@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>IE8 inline-block不能撑开问题</title>
+    <style type="text/css">
+        body{ font-size:84%; margin:0; line-height:1.5; color:#333; font-family:Arial, sans-serif;}
+        a{color:#34538b; text-decoration:none;}a:hover{text-decoration:underline;}
+        .box { display: inline-block; padding: 10px; background-color: #f0f3f9; }
+        .box p { width: 256px; }
+        .dn { display: none; }
+        .wait { background-color:#fff;border:1px solid #c00; }
+    </style>
+</head>
+<body>
+
+
+<div id="box" class="box">
+    <div class="inner">
+        <p>在twitter上看到今天中午新浪微博抽风的解释：“21日中午12点半至1点15分，新浪微博管理员徐某使用服务器带宽下载CL网爱情动作片42G左右，造成新浪微博无法访问，目前徐某已被停职，所下载的影片硬盘已被领导没收。（人家45分钟下了42G，果然是大公司）。” <span id="more" class="dn" style="display: none;">新浪员工刘彬表示这是子虚乌有黑我渣浪让人愤怒的事情！<br><img src="images/01.png" width="100%"></span></p>
+        <p>
+            <a href="javascript:" data-rel="more">展开更多(bug)</a>&emsp;
+            <a href="javascript:" data-rel="more">展开更多(bug fixed)</a>
+        </p>
+    </div>
+</div>
+<p class="wait">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
+
+
+<script type="text/javascript">
+    (function() {
+        var eleBox = document.getElementById("box"),
+            eleMore = eleBox && eleBox.getElementsByTagName("a"),
+            length = eleMore && eleMore.length;
+
+        if (!length) return;
+
+        for (var i=0; i<length; i+=1) {
+            eleMore[i].onclick = function() {
+                var idMore = this.getAttribute("data-rel"),
+                    target = null;
+                if (idMore && (target = document.getElementById(idMore))) {
+                    var html = this.innerHTML;
+                    if (target.style.display === "inline") {
+                        target.style.display = "none";
+                        if (/fixed/.test(html)) {
+                            eleBox.style.visibility = "inherit";
+                        }
+                    } else {
+                        target.style.display = "inline";
+                        if (/fixed/.test(html)) {
+                            eleBox.style.visibility = "visible";
+                        }
+                    }
+                }
+                return false;
+            };
+        }
+    })();
+</script>
+</body>
+</html>
