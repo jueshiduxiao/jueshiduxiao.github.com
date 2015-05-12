@@ -1,0 +1,6 @@
+当链接a标签包裹img图片时，
+在不同浏览器下，图片与链接a下方出现不等的间隙
+
+解决方法：
+1.给图片添加display:block;
+2.给图片添加vertical-align:middle;

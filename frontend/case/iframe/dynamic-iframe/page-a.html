@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>创建about:blank的iframe</title>
+</head>
+<body>
+
+
+<div id="demo"></div>
+
+<script type="text/javascript">
+    var demo = document.getElementById('demo');
+    var frame = document.createElement('iframe');
+    frame.src = 'page-B.html';
+    frame.width = '600';
+    frame.height = '300';
+    frame.frameBorder = '0';
+    frame.scrolling = 'no';
+    demo.appendChild(frame);
+</script>
+</body>
+</html>

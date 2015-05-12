@@ -1,0 +1,28 @@
+IE7bug
+
+
+当一个标签内存在滤镜效果（渐变效果），且此标签不包含可以激活layout的CSS样式属性时，滤镜效果失效
+
+解决方法：（以下属性均可以激活layout）
+
+    * display: inline-block 
+    * height: (任何值除了auto)
+    * float: (left 或 right)
+    * position: absolute
+    * width: (任何值除了auto)
+    * writing-mode: tb-rl
+    * zoom: (除 normal 外任意值)
+
+    【Internet Explorer 7】 还有一些额外的属性(不完全列表):
+    * min-height: (任意值)
+    * max-height: (除 none 外任意值)
+    * min-width: (任意值)
+    * max-width: (除 none 外任意值)
+    * overflow: (除 visible 外任意值)
+    * overflow-x: (除 visible 外任意值)
+    * overflow-y: (除 visible 外任意值)
+    * position: fixed
+    * 其中 overflow-x 和 overflow-y 是 css3 盒模型中的属性，目前还未被浏览器广泛支持。
+    * 对于内联元素(默认即为内联的元素，如 span，或 display:inline; 的元素)，width 和 height 只在 IE5.x 下和 IE6 或更新版本的 quirks 模式下触发 hasLayout 。
+      而对于IE6，如果浏览器运行于标准兼容模式下，内联元素会忽略 width 或 height 属性，所以设置 width 或 height不能在此种情况下令该元素具有 layout。
+    * 需要注意的是，hasLayout属性是微软特有的过时属性，在IE8、IE9中，hasLayout属性已经被废弃。

@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <style type="text/css">
+        #demo{background:#ccc;padding:20px 100px;}
+    </style>
+</head>
+<body>
+
+
+<div id="demo">page-a.html
+    <iframe id="myId" name="myName" src="page-b.html" width="600" height="300" frameborder="0" scrolling="no"></iframe>
+</div>
+
+<script type="text/javascript">
+    window.onload = function(){
+        //var head = window.frames["myName"].document.getElementsByTagName('head')[0];
+        //var body = window.frames["myName"].document.body;
+        var head = document.getElementById('myId').contentWindow.document.getElementsByTagName('head')[0];
+        var body = document.getElementById('myId').contentWindow.document.body;
+
+        //动态创建meta
+        var meta = document.createElement('meta');
+        meta.setAttribute('name','keywords');
+        meta.setAttribute('content','动态加载meta标签');
+        head.appendChild(meta);
+
+        //动态引入CSS
+        var link = document.createElement('link');
+        link.setAttribute('rel','stylesheet');
+        link.setAttribute('type','text/css');
+        link.setAttribute('href','http://www.yemianzai.com/libs/reset.v3.1.1.css ');
+        head.appendChild(link);
+
+        //动态创建style
+        var style = document.createElement('style');
+        style.setAttribute('type','text/css');
+        var text = 'body{border-top:10px solid #c00;}';
+        if(document.all){
+            style.styleSheet.cssText = text;
+        }else{
+            var cssText = document.createTextNode(text);
+            style.appendChild(cssText);
+        }
+        head.appendChild(style);
+
+        //动态引入script-src
+        var scriptSrc = document.createElement('script');
+        scriptSrc.setAttribute('type','text/javascript');
+        scriptSrc.setAttribute('src','http://www.yemianzai.com/libs/jquery/jquery.v1.7.0.min.js');
+        head.appendChild(scriptSrc);
+
+        //动态创建script
+        var script = document.createElement('script');
+        script.setAttribute('type','text/javascript');
+        script.text = 'var a = 123456789;';  //注意方法
+        head.appendChild(script);
+
+        //动态加载HTML标签
+        var div = document.createElement('div');
+        div.className = 'divClass';
+        var word = document.createTextNode('动态加载div标签成功！');
+        div.appendChild(word);
+        body.appendChild(div);
+
+    }
+</script>
+</body>
+</html>

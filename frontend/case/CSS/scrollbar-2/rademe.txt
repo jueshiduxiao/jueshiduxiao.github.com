@@ -1,0 +1,8 @@
+IE7bug
+
+
+如果给body添加overflow-y:scroll属性，IE7显示异常；
+
+
+解决方法：
+将overflow-y:scroll样式添加到html标签内
