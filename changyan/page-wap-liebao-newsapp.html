@@ -154,13 +154,14 @@ img[type=gif],.smallimg{display:block; width:auto !important; padding:0; margin:
 				</div>
 			</div>
 		</section>
-		<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=cyruNjvn2&conf=prod_23b5217d21b24a866c841a26ba1763b9"></script>
-		<script type="text/javascript">
-			window._config = {
-				autoRun: false //默认为true
-			};
-		</script>
-	</div><!-- SOHUCS end -->
+	</div>
+    <script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=cyruNjvn2&conf=prod_23b5217d21b24a866c841a26ba1763b9"></script>
+    <script type="text/javascript">
+        window._config = {
+            autoRun: false //默认为true
+        };
+    </script>
+    <!-- SOHUCS end -->
 
 </div>
 
@@ -224,8 +225,8 @@ var NewsApp = {
 
 		//畅言评论
 		window.cyan.api.ready(function(api){
-			api.run({sid: 7809291});
 			$('#SOHUCS').html('');
+			api.run({sid: 7809291});
 		});
 
 		//评论数回调
