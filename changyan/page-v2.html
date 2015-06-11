@@ -22,30 +22,21 @@
 <div class="doc-wrapper">
     <div style="padding: 100px 445px 400px 445px; font-size: 80px;">文章主体高度</div>
 
-    <!--普通版-->
-    <div id="SOHUCS" sid="yemianzai-changyan-0001"></div>
-    <script type="text/javascript">
-        (function(){
-            window._config = {
-                pageSize: 10
-            };
-
-            var appid = 'cyrkKYELy',
-                conf = 'prod_14a44184e153225aac09c814509d1426';
-
-            var doc = document,
-                s = doc.createElement('script'),
-                h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
-                s.type = 'text/javascript';
-                s.charset = 'utf-8';
-                s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid + '&_=' + (+new Date());
-
-            h.insertBefore(s,h.firstChild);
-            window.SCS_NO_IFRAME = true;
-
-            window.changyan = function () {};
-        })();
-    </script>
+<!--普通版-->
+<div id="SOHUCS"></div>
+<script charset="utf-8" type="text/javascript" src="http://assets.changyan.sohu.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+    window._config = {
+        pageSize: 10
+    };
+    window.changyan.api.config({
+        appid: 'cyqHvdkcp',
+        conf: 'prod_14a44184e153225aac09c814509d1426'
+    });
+    window.changyan.api.ready(function (api) {
+        console.log('ready');
+    });
+</script>
 </div>
 
 </body>
